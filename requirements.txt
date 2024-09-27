@@ -5,5 +5,7 @@ matplotlib
 scikit-learn
 yfinance
 tensorflow
+statsmodels
+xgboost
 
 -e .
