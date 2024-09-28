@@ -7,5 +7,8 @@ yfinance
 tensorflow
 statsmodels
 xgboost
+cassandra-driver
+astrapy
+python-dotenv
 
 -e .
