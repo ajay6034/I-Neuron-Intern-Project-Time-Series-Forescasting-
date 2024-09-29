@@ -45,7 +45,20 @@ This project focuses on predicting Tesla stock prices using various machine lear
   - Collects user input for `SMA_20`, `EMA_20`, and `RSI`.
   - Loads the trained model and scaler for making predictions.
   - Displays the predicted Tesla stock price on the web interface.
- 
+
+ ## Graphs 
   ![image](https://github.com/user-attachments/assets/27ac9c5e-41a2-41b9-be50-84c02932c07f)
+
+  ![image](https://github.com/user-attachments/assets/96d65425-2bc3-4a9e-9509-c2ca6039c5f9)
+
+  ![image](https://github.com/user-attachments/assets/bc6c4461-ce16-4c2a-b480-f5a83164112c)
+
+  ![image](https://github.com/user-attachments/assets/b8607b2a-6a99-4652-b7a6-7c49b8fb1766)
+
+  ![image](https://github.com/user-attachments/assets/3bc08cb6-c44e-4819-9335-b1e4fa7fbbae)
+
+
+
+
 
 
