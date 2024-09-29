@@ -46,8 +46,3 @@ This project focuses on predicting Tesla stock prices using various machine lear
   - Loads the trained model and scaler for making predictions.
   - Displays the predicted Tesla stock price on the web interface.
 
-## Setup and Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/tesla-stock-prediction.git
