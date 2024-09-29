@@ -10,5 +10,5 @@ xgboost
 cassandra-driver
 astrapy
 python-dotenv
-
+Flask
 -e .

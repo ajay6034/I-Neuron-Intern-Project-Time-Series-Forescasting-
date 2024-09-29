@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Tesla Stock Price Prediction</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="POST">
+            <div class="form-group">
+                <label for="sma_20">Simple Moving Average (SMA 20)</label>
+                <input type="number" class="form-control" id="sma_20" name="sma_20" placeholder="Enter SMA (20 days)" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="ema_20">Exponential Moving Average (EMA 20)</label>
+                <input type="number" class="form-control" id="ema_20" name="ema_20" placeholder="Enter EMA (20 days)" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="rsi">Relative Strength Index (RSI)</label>
+                <input type="number" class="form-control" id="rsi" name="rsi" placeholder="Enter RSI" min="0" max="100" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="volume">Trading Volume</label>
+                <input type="number" class="form-control" id="volume" name="volume" placeholder="Enter Trading Volume" required>
+            </div>
+            <div class="text-center">
+                <input class="btn btn-primary" type="submit" value="Predict Stock Price">
+            </div>
+        </form>
+
+        {% if results %}
+        <h2 class="text-center mt-5">Predicted Tesla Stock Price: {{ results }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
