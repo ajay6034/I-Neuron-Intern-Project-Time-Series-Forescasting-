@@ -48,9 +48,9 @@ class DataTransformation:
 
             test_df.dropna(inplace=True)
 
-            # Normalizing the features (SMA, EMA, RSI)
+            # Normalizing the features (SMA, EMA, RSI, Volume)
             scaler = MinMaxScaler()
-            feature_cols = ['SMA_20', 'EMA_20', 'RSI']  # Normalized features
+            feature_cols = ['SMA_20', 'EMA_20', 'RSI', 'Volume']  # Adding Volume for normalization
 
             train_df[feature_cols] = scaler.fit_transform(train_df[feature_cols])
             test_df[feature_cols] = scaler.transform(test_df[feature_cols])
