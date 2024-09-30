@@ -25,17 +25,20 @@ class DataIngestion:
 
             # Dropping unnecessary columns like 'Open', 'High', 'Low', etc.
             df = df[['Date', 'Close', 'Volume']]  # Keeping only essential features for forecasting
-            df['Date'] = pd.to_datetime(df['Date'])
-            df.set_index('Date', inplace=True)
+            df['Date'] = pd.to_datetime(df['Date'])  # Convert Date column to datetime format
+            
+            # Resetting index to ensure Date is a regular column, not the index
+            df.reset_index(drop=True, inplace=True)
 
-            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
+            # Save raw data with Date as a column
+            os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
 
             # Train-test split
             logging.info("Train-test split initiated")
             train_set, test_set = train_test_split(df, test_size=0.3, random_state=42, shuffle=False)  # Time series split
 
-            # Save the train and test data
+            # Save the train and test data with Date as a column
             train_set.to_csv(self.ingestion_config.train_data_path, index=False, header=True)
             test_set.to_csv(self.ingestion_config.test_data_path, index=False, header=True)
 
