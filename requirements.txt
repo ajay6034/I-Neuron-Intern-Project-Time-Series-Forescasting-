@@ -11,4 +11,9 @@ cassandra-driver
 astrapy
 python-dotenv
 Flask
+prophet
+cython
+fbprophet
+
+
 -e .

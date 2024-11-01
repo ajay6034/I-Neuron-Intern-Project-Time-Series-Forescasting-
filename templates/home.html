@@ -3,37 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Prediction</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Stock Price Prediction</title>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center mt-5">Tesla Stock Price Prediction</h1>
-        <form action="{{ url_for('predict_datapoint') }}" method="POST">
-            <div class="form-group">
-                <label for="sma_20">Simple Moving Average (SMA 20)</label>
-                <input type="number" class="form-control" id="sma_20" name="sma_20" placeholder="Enter SMA (20 days)" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="ema_20">Exponential Moving Average (EMA 20)</label>
-                <input type="number" class="form-control" id="ema_20" name="ema_20" placeholder="Enter EMA (20 days)" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="rsi">Relative Strength Index (RSI)</label>
-                <input type="number" class="form-control" id="rsi" name="rsi" placeholder="Enter RSI" min="0" max="100" step="0.01" required>
-            </div>
-            <div class="form-group">
-                <label for="volume">Trading Volume</label>
-                <input type="number" class="form-control" id="volume" name="volume" placeholder="Enter Trading Volume" required>
-            </div>
-            <div class="text-center">
-                <input class="btn btn-primary" type="submit" value="Predict Stock Price">
-            </div>
-        </form>
+    <h1>Stock Price Prediction</h1>
 
-        {% if results %}
-        <h2 class="text-center mt-5">Predicted Tesla Stock Price: {{ results }}</h2>
-        {% endif %}
-    </div>
+    <form method="POST" action="/predictdata">
+        <label for="sma_20">SMA (20 days):</label><br>
+        <input type="text" id="sma_20" name="sma_20" placeholder="Enter 20-day SMA" required><br><br>
+
+        <label for="ema_20">EMA (20 days):</label><br>
+        <input type="text" id="ema_20" name="ema_20" placeholder="Enter 20-day EMA" required><br><br>
+
+        <label for="rsi">RSI:</label><br>
+        <input type="text" id="rsi" name="rsi" placeholder="Enter RSI value" required><br><br>
+
+        <label for="volume">Volume:</label><br>
+        <input type="text" id="volume" name="volume" placeholder="Enter Volume" required><br><br>
+
+        <label for="start_date">Start Date for Forecast:</label><br>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+
+        <label for="forecast_days">Number of Forecast Days:</label><br>
+        <input type="number" id="forecast_days" name="forecast_days" min="1" placeholder="Enter forecast days" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <br>
+
+    {% if results %}
+        <h2>Prediction Results:</h2>
+        <table border="1">
+            <tr>
+                <th>Date</th>
+                <th>Predicted Stock Price</th>
+            </tr>
+            {% for date, result in results %}
+            <tr>
+                <td>{{ date }}</td>
+                <td>{{ result }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
 </body>
 </html>
